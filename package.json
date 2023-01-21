@@ -1,0 +1,18 @@
+{
+  "name": "preparse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "author": "",
+  "license": "Apache2",
+  "dependencies": {
+    "@stoplight/yaml": "^4.2.3",
+    "jsonpath": "^1.1.1",
+    "mergician": "^1.0.3",
+    "openapi-format": "^1.13.0"
+  }
+}
