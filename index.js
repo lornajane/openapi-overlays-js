@@ -3,16 +3,18 @@ import jsonpath from 'jsonpath';
 import {safeStringify,parseWithPointers} from "@stoplight/yaml";
 import mergician from 'mergician';
 
+// example: node index.js test/specs/petstore.yaml test/overlays/overlay.yaml
+const openapiFile = process.argv[2]
+const overlayFile = process.argv[3]
+
 try {
 
-	// Parse the "input" OpenAPI spec document
-
-	const specraw = fs.readFileSync('big.yaml', 'utf8');
+	// Parse the "input" OpenAPI document
+	const specraw = fs.readFileSync(openapiFile, 'utf8');
 	var spec = parseWithPointers(specraw).data;
 
-	// Parse the "overlay" OpenAPI document
-
-	const overlayraw = fs.readFileSync('overlay.yaml', 'utf8');
+	// Parse the "overlay" document
+	const overlayraw = fs.readFileSync(overlayFile, 'utf8');
 	const overlay = parseWithPointers(overlayraw).data;
 
 	// Use jsonpath.apply to do the changes
