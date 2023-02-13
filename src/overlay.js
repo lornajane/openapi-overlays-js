@@ -6,21 +6,36 @@ import mergician from 'mergician';
 function applyOverlayToOpenAPI(spec, overlay) {
 	// Use jsonpath.apply to do the changes
 	overlay.actions.forEach((a)=>{
-		jsonpath.apply(spec, a.target, (chunk) => {
-			// Is it a remove?
-			if (a.hasOwnProperty('remove')) {
-				return {};
+		// Is it a remove?
+		if (a.hasOwnProperty('remove')) {
+			// split the path expression
+			var target_pieces = jsonpath.parse(a.target);
+			// snag the last piece, we need this info to work out which element to remove
+			var final_segment = target_pieces.pop();
+			var target_key = "";
+			if(final_segment.expression.type == "identifier") {
+				target_key = final_segment.expression.value;
 			}
 
-			// It must be an update
+		    // Now rebuild the path up to before the final bit
+			var remaining_path = jsonpath.stringify(target_pieces);
 			
-			// Deep merge using a module (built-in spread operator is only shallow)
-			const merger = mergician({appendArrays: true});
-			console.debug(a);
-			const merged = merger(chunk, a.update);
-			return merged;
+			// get the parent node and remove the target element
+			var node_value = jsonpath.value(spec, remaining_path);
+			delete node_value[target_key];
+			
+		} else {
+			// It must be an update
+			jsonpath.apply(spec, a.target, (chunk) => {
+				
+				// Deep merge using a module (built-in spread operator is only shallow)
+				const merger = mergician({appendArrays: true});
+				console.debug(a);
+				const merged = merger(chunk, a.update);
+				return merged;
 
-		});
+			});
+		}
 	})
 
 	return spec;

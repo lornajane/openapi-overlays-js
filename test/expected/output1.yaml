@@ -9,7 +9,6 @@ servers:
 paths:
   /pets:
     get:
-      summary: {}
       operationId: listPets
       tags:
         - pets

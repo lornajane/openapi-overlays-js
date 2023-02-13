@@ -13,10 +13,22 @@ test('apply an overlay and check the output', () => {
 	expect(result).toEqual(expectedOutput);
 });
 
-test('apply an overlay and check the output', () => {
+test('add a description and update the summary', () => {
 	const openapiFile = "test/openapi/town.yaml";
 	const overlayFile = "test/overlays/building-description.yaml";
 	const expectedFile = "test/expected/town-building-description.yaml";
+	const expectedOutput = fs.readFileSync(expectedFile, 'utf8');
+
+	const result = overlayFiles(openapiFile, overlayFile);
+
+	expect(result).toEqual(expectedOutput);
+});
+
+
+test('remove an example', () => {
+	const openapiFile = "test/openapi/town.yaml";
+	const overlayFile = "test/overlays/remove-example.yaml";
+	const expectedFile = "test/expected/town-remove-example.yaml";
 	const expectedOutput = fs.readFileSync(expectedFile, 'utf8');
 
 	const result = overlayFiles(openapiFile, overlayFile);
