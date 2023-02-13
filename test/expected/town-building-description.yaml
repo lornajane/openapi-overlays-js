@@ -1,17 +1,16 @@
-openapi: "3.1.0"
+openapi: 3.1.0
 info:
   version: 1.0.0
   title: Imaginary town
 servers:
-  - url: https://example.com
+  - url: 'https://example.com'
     description: Example server
 paths:
-  '/buildings':
+  /buildings:
     get:
-	  summary: "All of the available buildings"
+      summary: All of the available buildings
       operationId: buildingsAll
-	  description: "This is the summary of getting the buildings"
-
+	  description: This is the summary of getting the buildings
       responses:
         '200':
           description: Return all known buildings
@@ -19,8 +18,8 @@ paths:
             application/json:
               schema:
                 type: object
-                properties: 
+                properties:
                   message:
                     type: string
-                    example: "house"
+                    example: house
 
