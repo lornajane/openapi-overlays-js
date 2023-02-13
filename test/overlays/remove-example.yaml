@@ -5,3 +5,5 @@ info:
 actions:
 - target: $.paths['/buildings'].get.responses['200'].content['application/json'].schema.properties['message'].example
   remove: true
+- target: $..description
+  remove: true
