@@ -37,3 +37,26 @@ test('remove an example', () => {
 });
 
 
+test('remove a property', () => {
+	const openapiFile = "test/openapi/town.yaml";
+	const overlayFile = "test/overlays/remove-properties.yaml";
+	const expectedFile = "test/expected/town-remove-properties.yaml";
+	const expectedOutput = fs.readFileSync(expectedFile, 'utf8');
+
+	const result = overlayFiles(openapiFile, overlayFile);
+
+	expect(result).toEqual(expectedOutput);
+});
+
+test('remove all description fields', () => {
+	const openapiFile = "test/openapi/town.yaml";
+	const overlayFile = "test/overlays/remove-descriptions.yaml";
+	const expectedFile = "test/expected/town-remove-descriptions.yaml";
+	const expectedOutput = fs.readFileSync(expectedFile, 'utf8');
+
+	const result = overlayFiles(openapiFile, overlayFile);
+
+	expect(result).toEqual(expectedOutput);
+});
+
+

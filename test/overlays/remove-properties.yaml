@@ -3,5 +3,6 @@ info:
   title: Remove an example
   version: 1.0.0
 actions:
-- target: $.components.schemas.Building.properties['building'].example
+- target: $.paths['/locations'].get.responses['200']..properties[?(@.type == 'string')]
   remove: true
+
