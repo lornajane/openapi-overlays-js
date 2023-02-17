@@ -4,16 +4,13 @@ info:
   title: Imaginary town
 servers:
   - url: 'https://example.com'
-    description: Example server
 paths:
   /buildings:
     get:
-      summary: All of the available buildings
+      summary: All buildings
       operationId: buildingsList
-      description: This is the summary of getting the buildings
       responses:
         '200':
-          description: Return all known buildings
           content:
             application/json:
               schema:
@@ -28,12 +25,10 @@ paths:
         - name: buildingId
           in: path
           required: true
-          description: Which building to return
           schema:
             type: string
       responses:
         '200':
-          description: Return a building
           content:
             application/json:
               schema:
@@ -44,7 +39,6 @@ paths:
       operationId: locationList
       responses:
         '200':
-          description: Returns all locations
           content:
             application/json:
               schema:

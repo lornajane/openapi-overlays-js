@@ -8,9 +8,8 @@ servers:
 paths:
   /buildings:
     get:
-      summary: All of the available buildings
+      summary: All buildings
       operationId: buildingsList
-      description: This is the summary of getting the buildings
       responses:
         '200':
           description: Return all known buildings
@@ -55,9 +54,6 @@ paths:
                     location_id:
                       type: int
                       example: 44
-                    name:
-                      type: string
-                      example: North Village
 components:
   schemas:
     Building:
