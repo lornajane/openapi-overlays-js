@@ -34,6 +34,21 @@ function applyOverlayToOpenAPI(spec, overlay) {
 	return spec;
 }
 
+function sortOpenAPIFields(field1, field2) {
+    const orderedKeys = ["info", "servers", "paths", "components", "summary", "objectId", "description", "tags", "parameters", "responses"];
+
+    const index1 = orderedKeys.indexOf(field1);
+    const index2 = orderedKeys.indexOf(field2);
+
+    if (index1 === -1 || index2 === -1) {
+        return 0;
+    } else if (index1 > index2) {
+        return 1;
+    } else {
+        return -1;
+    }
+}
+
 export function overlayFiles(openapiFile, overlayFile) {
 	// Parse the "input" OpenAPI document
 	const specraw = fs.readFileSync(openapiFile, 'utf8');
@@ -46,7 +61,7 @@ export function overlayFiles(openapiFile, overlayFile) {
 	spec = applyOverlayToOpenAPI(spec, overlay);
 
 	// Return the new spec
-	return safeStringify(spec);
-
+	return safeStringify(spec, {"sortKeys": sortOpenAPIFields});
 }
+
 
