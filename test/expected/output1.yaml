@@ -10,6 +10,9 @@ paths:
   /pets:
     get:
       operationId: listPets
+      info:
+        x-overlay-applied: structured-overlay
+        description: This is an added description
       tags:
         - pets
         - wildcard-done
@@ -41,9 +44,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      info:
-        x-overlay-applied: structured-overlay
-        description: This is an added description
     post:
       foo:
         bar: hello
