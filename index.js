@@ -1,8 +1,34 @@
+#!/usr/bin/env node
+import arg from 'arg';
 import {overlayFiles} from './src/overlay.js'
 
-// example: node index.js test/openapi/petstore.yaml test/overlays/overlay.yaml
-const openapiFile = process.argv[2]
-const overlayFile = process.argv[3]
-var spec = overlayFiles(openapiFile, overlayFile);
-console.log(spec);
+function showHelp() {
+    console.log("Usage: overlayjs --openapi FILEPATH --overlay FILEPATH");
+    console.log("    use --help to see this help");
+}
+
+try {
+    const args = arg({
+        '--openapi': String,
+        '--overlay': String,
+        '--help': String
+    });
+
+    if(args['--overlay'] && args['--openapi']) {
+        const openapiFile = args['--openapi'];
+        const overlayFile = args['--overlay'];
+        var spec = overlayFiles(openapiFile, overlayFile);
+        console.log(spec);
+    } else {
+        showHelp()
+    }
+
+} catch (err) {
+    if (err.code === 'ARG_UNKNOWN_OPTION') {
+        console.warn(err.message);
+        showHelp()
+    } else {
+        throw err;
+    }
+}
 

@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+      "overlayjs": "./index.js"
+  },
   "scripts": {
     "test": "node_modules/.bin/jest"
   },
@@ -11,6 +14,7 @@
   "license": "Apache2",
   "dependencies": {
     "@stoplight/yaml": "^4.2.3",
+    "arg": "^5.0.2",
     "jsonpath": "^1.1.1",
     "mergician": "^1.0.3",
     "openapi-format": "^1.13.0"
