@@ -59,4 +59,14 @@ test('remove all description fields', () => {
 	expect(result).toEqual(expectedOutput);
 });
 
+test('fail to update a primitive string type', () => {
+	const openapiFile = "test/openapi/immutable.yaml";
+	const overlayFile = "test/overlays/immutable.yaml";
+	const expectedFile = "test/expected/immutable.yaml";
+	const expectedOutput = fs.readFileSync(expectedFile, 'utf8');
+
+	const result = overlayFiles(openapiFile, overlayFile);
+
+	expect(result).toEqual(expectedOutput);
+});
 
