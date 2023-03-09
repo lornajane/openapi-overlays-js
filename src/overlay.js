@@ -5,7 +5,7 @@ import mergician from 'mergician';
 
 function applyOverlayToOpenAPI(spec, overlay) {
 	// Use jsonpath.apply to do the changes
-	overlay.actions.forEach((a)=>{
+	if (overlay.actions && overlay.actions.length >= 1) overlay.actions.forEach((a)=>{
 		// Is it a remove?
 		if (a.hasOwnProperty('remove')) {
 			while(true) {
