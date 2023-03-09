@@ -70,3 +70,14 @@ test('fail to update a primitive string type', () => {
 	expect(result).toEqual(expectedOutput);
 });
 
+test('fail to parse invalid jsonpath expression', () => {
+	const openapiFile = "test/openapi/not-jsonpath.yaml";
+	const overlayFile = "test/overlays/not-jsonpath.yaml";
+	const expectedFile = "test/expected/not-jsonpath.yaml";
+	const expectedOutput = fs.readFileSync(expectedFile, 'utf8');
+
+	const result = overlayFiles(openapiFile, overlayFile);
+
+	expect(result).toEqual(expectedOutput);
+});
+
