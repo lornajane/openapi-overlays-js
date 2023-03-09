@@ -23,9 +23,14 @@ function applyOverlayToOpenAPI(spec, overlay) {
 			jsonpath.apply(spec, a.target, (chunk) => {
 				
 				// Deep merge using a module (built-in spread operator is only shallow)
-				const merger = mergician({appendArrays: true});
-				const merged = merger(chunk, a.update);
-				return merged;
+				try {
+					const merger = mergician({appendArrays: true})
+					return merger(chunk, a.update)
+				}
+				catch (ex) {
+					process.stderr.write(`Error applying overlay: ${ex.message}\n`)
+					return chunk
+				}
 
 			});
 		}
