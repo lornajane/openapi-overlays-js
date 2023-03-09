@@ -81,3 +81,25 @@ test('fail to parse invalid jsonpath expression', () => {
 	expect(result).toEqual(expectedOutput);
 });
 
+test('fail to parse invalid overlay document', () => {
+	const openapiFile = "test/openapi/not-overlay.yaml";
+	const overlayFile = "test/overlays/not-overlay.yaml";
+	const expectedFile = "test/expected/not-overlay.yaml";
+	const expectedOutput = fs.readFileSync(expectedFile, 'utf8');
+
+	const result = overlayFiles(openapiFile, overlayFile);
+
+	expect(result).toEqual(expectedOutput);
+});
+
+test('overlay document with empty actions is a nop', () => {
+	const openapiFile = "test/openapi/not-overlay.yaml";
+	const overlayFile = "test/overlays/not-overlay.yaml";
+	const expectedFile = "test/expected/not-overlay.yaml";
+	const expectedOutput = fs.readFileSync(expectedFile, 'utf8');
+
+	const result = overlayFiles(openapiFile, overlayFile);
+
+	expect(result).toEqual(expectedOutput);
+});
+
