@@ -52,7 +52,7 @@ paths:
                   type: object
                   properties:
                     location_id:
-                      type: int
+                      type: integer
                       example: 44
                     name:
                       type: string
@@ -65,5 +65,5 @@ components:
         building:
           type: string
         location_id:
-          type: int
+          type: integer
           example: 44

@@ -1,0 +1,8 @@
+overlay: 1.0.0
+info:
+  title: Expected to fail on unparseable target expression
+  version: 1.0.0
+actions:
+  - target: £
+    add:
+      name: foo

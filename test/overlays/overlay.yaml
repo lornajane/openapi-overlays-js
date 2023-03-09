@@ -11,7 +11,7 @@ actions:
       - wildcard-done
 - target: $.paths['/pets'].get
   update:
-    info:
+    x-info:
       x-overlay-applied: structured-overlay
       description: This is an added description
     tags:

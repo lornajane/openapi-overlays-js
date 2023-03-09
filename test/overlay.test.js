@@ -59,4 +59,47 @@ test('remove all description fields', () => {
 	expect(result).toEqual(expectedOutput);
 });
 
+test('fail to update a primitive string type', () => {
+	const openapiFile = "test/openapi/immutable.yaml";
+	const overlayFile = "test/overlays/immutable.yaml";
+	const expectedFile = "test/expected/immutable.yaml";
+	const expectedOutput = fs.readFileSync(expectedFile, 'utf8');
+
+	const result = overlayFiles(openapiFile, overlayFile);
+
+	expect(result).toEqual(expectedOutput);
+});
+
+test('fail to parse invalid jsonpath expression', () => {
+	const openapiFile = "test/openapi/not-jsonpath.yaml";
+	const overlayFile = "test/overlays/not-jsonpath.yaml";
+	const expectedFile = "test/expected/not-jsonpath.yaml";
+	const expectedOutput = fs.readFileSync(expectedFile, 'utf8');
+
+	const result = overlayFiles(openapiFile, overlayFile);
+
+	expect(result).toEqual(expectedOutput);
+});
+
+test('fail to parse invalid overlay document', () => {
+	const openapiFile = "test/openapi/not-overlay.yaml";
+	const overlayFile = "test/overlays/not-overlay.yaml";
+	const expectedFile = "test/expected/not-overlay.yaml";
+	const expectedOutput = fs.readFileSync(expectedFile, 'utf8');
+
+	const result = overlayFiles(openapiFile, overlayFile);
+
+	expect(result).toEqual(expectedOutput);
+});
+
+test('overlay document with empty actions is a nop', () => {
+	const openapiFile = "test/openapi/not-overlay.yaml";
+	const overlayFile = "test/overlays/not-overlay.yaml";
+	const expectedFile = "test/expected/not-overlay.yaml";
+	const expectedOutput = fs.readFileSync(expectedFile, 'utf8');
+
+	const result = overlayFiles(openapiFile, overlayFile);
+
+	expect(result).toEqual(expectedOutput);
+});
 
