@@ -1,6 +1,6 @@
 # Overlays for OpenAPI
 
-This NodeJS library is an implementation of the in-progress [OpenAPI Overlays Specification](https://github.com/OAI/Overlay-Specification/blob/main/versions/1.0.0.md). It assumes a switch from JMESPath to JSONPath, which can be found [in this pull request](https://github.com/OAI/Overlay-Specification/pull/18).
+This NodeJS library is an implementation of the in-progress [OpenAPI Overlays Specification](https://github.com/OAI/Overlay-Specification/blob/main/versions/1.0.0.md).
 
 ## About Overlays
 
