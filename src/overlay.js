@@ -15,7 +15,11 @@ function applyOverlayToOpenAPI(spec, overlay) {
 				}
 				var parent = jsonpath.parent(spec, a.target)
 				const thingToRemove = path[0][path[0].length - 1]
-				delete parent[thingToRemove]
+				if (Array.isArray(parent)) {
+					parent.splice(thingToRemove, 1);
+				} else {
+					delete parent[thingToRemove];
+				}
 			}
 
 		} else {
