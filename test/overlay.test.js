@@ -59,6 +59,17 @@ test('remove all description fields', () => {
 	expect(result).toEqual(expectedOutput);
 });
 
+test('concatenate lists when target is an array type', () => {
+	const openapiFile = "test/openapi/town.yaml";
+	const overlayFile = "test/overlays/update-array.yaml";
+	const expectedFile = "test/expected/town-update-array.yaml";
+	const expectedOutput = fs.readFileSync(expectedFile, 'utf8');
+
+	const result = overlayFiles(openapiFile, overlayFile);
+
+	expect(result).toEqual(expectedOutput);
+});
+
 test('fail to update a primitive string type', () => {
 	const openapiFile = "test/openapi/immutable.yaml";
 	const overlayFile = "test/overlays/immutable.yaml";

@@ -22,9 +22,14 @@ function applyOverlayToOpenAPI(spec, overlay) {
 			try {
 				// It must be an update
 				jsonpath.apply(spec, a.target, (chunk) => {
-					// Deep merge using a module (built-in spread operator is only shallow)
-					const merger = mergician({appendArrays: true})
-					return merger(chunk, a.update)
+					if (Array.isArray(chunk) && Array.isArray(a.update)) {
+						// Concat arrays if target and update are both array objects
+						return chunk.concat(a.update);
+					} else {
+						// Deep merge objects using a module (built-in spread operator is only shallow)
+						const merger = mergician({ appendArrays: true });
+						return merger(chunk, a.update);
+					}
 				});
 			}
 			catch (ex) {
