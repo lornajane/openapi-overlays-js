@@ -114,3 +114,14 @@ test('overlay document with empty actions is a nop', () => {
 	expect(result).toEqual(expectedOutput);
 });
 
+test('remove all matching responses', () => {
+	const openapiFile = "test/openapi/responses.yaml";
+	const overlayFile = "test/overlays/remove-responses.yaml";
+	const expectedFile = "test/expected/remove-responses.yaml";
+	const expectedOutput = fs.readFileSync(expectedFile, 'utf8');
+
+	const result = overlayFiles(openapiFile, overlayFile);
+
+	expect(result).toEqual(expectedOutput);
+});
+
