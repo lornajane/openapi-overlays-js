@@ -9,7 +9,7 @@ function applyOverlayToOpenAPI(spec, overlay) {
 		// Is it a remove?
 		if (a.hasOwnProperty('remove')) {
 			while(true) {
-				var path = jsonpath.paths(spec, a.target, 1)
+				var path = jsonpath.paths(spec, a.target)
 				if (path.length == 0) {
 					break
 				}
