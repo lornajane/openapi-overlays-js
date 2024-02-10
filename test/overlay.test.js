@@ -59,6 +59,17 @@ test('remove all description fields', () => {
 	expect(result).toEqual(expectedOutput);
 });
 
+test('remove a server array entry', () => {
+	const openapiFile = "test/openapi/openapi-with-servers.yaml";
+	const overlayFile = "test/overlays/remove-server.yaml";
+	const expectedFile = "test/expected/one-less-server.yaml";
+	const expectedOutput = fs.readFileSync(expectedFile, 'utf8');
+
+	const result = overlayFiles(openapiFile, overlayFile);
+
+	expect(result).toEqual(expectedOutput);
+});
+
 test('fail to update a primitive string type', () => {
 	const openapiFile = "test/openapi/immutable.yaml";
 	const overlayFile = "test/overlays/immutable.yaml";
