@@ -28,6 +28,8 @@ Example: `overlayjs --openapi openapi.yml --overlay add-sparkle.yaml`
 
 Use `overlayjs --help` to see the usage information.
 
+See [docs/examples](docs/examples/index.md) for more examples.
+
 ## Project status
 
 This project is very much at idea stage but feedback, comments and questions are all very welcome as issues on this repository - and pull requests are also gratefully received. It would be excellent to hear what problem this tool can solve, and how you get on with it. Bonus points if you can share examples (working or broken) of what you tried.
