@@ -11,7 +11,7 @@ try {
     const args = arg({
         '--openapi': String,
         '--overlay': String,
-        '--help': String
+        '--help': Boolean,
     });
 
     if(args['--overlay'] && args['--openapi']) {
