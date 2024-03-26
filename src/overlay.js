@@ -23,13 +23,13 @@ function applyOverlayToOpenAPI(spec, overlay) {
 			}
 
 		} else {
+			// It must be an update
 			try {
-				// It must be an update
-				jsonpath.apply(spec, a.target, (chunk) => {
-					// Deep merge using a module (built-in spread operator is only shallow)
-					const merger = mergician({appendArrays: true})
-					return merger(chunk, a.update)
-				});
+				if (a.target === '$') {
+					return merger(a.update)(spec);
+				} else {
+					jsonpath.apply(spec, a.target, merger(a.update));
+				}
 			}
 			catch (ex) {
 				process.stderr.write(`Error applying overlay: ${ex.message}\n`)
@@ -40,6 +40,13 @@ function applyOverlayToOpenAPI(spec, overlay) {
 	})
 
 	return spec;
+}
+
+// Deep merge using a module (built-in spread operator is only shallow)
+function merger(obj) {
+	return (chunk) => {
+		return mergician({appendArrays: true})(chunk, obj)
+	};
 }
 
 function sortOpenAPIFields(field1, field2) {
