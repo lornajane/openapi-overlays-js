@@ -11,8 +11,17 @@ try {
   const args = arg({
     '--openapi': String,
     '--overlay': String,
-    '--help': String
+    '--help': Boolean
   })
+
+  if (args['--overlay'] && args['--openapi']) {
+    const openapiFile = args['--openapi']
+    const overlayFile = args['--overlay']
+    const spec = overlayFiles(openapiFile, overlayFile)
+    console.log(spec)
+  } else {
+    showHelp()
+  }
 
   if (args['--overlay'] && args['--openapi']) {
     const openapiFile = args['--openapi']
