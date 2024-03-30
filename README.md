@@ -14,13 +14,15 @@ Overlays are a way to extend or enhance an existing [OpenAPI description](https:
 
 ## Installation
 
-This project isn't published as a package yet, so:
+Install the `overlayjs` command from [npm](https://npmjs.com) with the following command:
 
-* Clone this repo
-* Run `npm install` to get the dependencies
-* Run `npm install -g` to get `overlayjs` as a command
+```text
+npm install -g openapi-overlay-js
+```
 
-> **Pro-tip:** you can also use `node index.js` from the root of the project if you don't want to install a global command.
+The `-g` switch installs it globally so you can use the command from anywhere on your system.
+
+> **Pro-tip:** use `node index.js` from the root of the project if you're using the bleeding edge of the project or working on a branch.
 
 ## Usage
 
@@ -32,6 +34,6 @@ See [docs/examples](docs/examples/index.md) for more examples.
 
 ## Project status
 
-This project is very much at idea stage but feedback, comments and questions are all very welcome as issues on this repository - and pull requests are also gratefully received. It would be excellent to hear what problem this tool can solve, and how you get on with it. Bonus points if you can share examples (working or broken) of what you tried.
+:warning: Project status: alpha
 
-:warning: please be aware that absolutely anything may change at any time, it would probably be safest to pin to a specific commit for now.
+This project is very much at an alpha stage but feedback, comments and questions are all very welcome as issues on this repository - and pull requests are also gratefully received. It would be excellent to hear what problem this tool can solve, and how you get on with it. Bonus points if you can share examples (working or broken) of what you tried.
