@@ -1,7 +1,7 @@
 {
-  "name": "preparse",
-  "version": "1.0.0",
-  "description": "",
+  "name": "openapi-overlays-js",
+  "version": "0.1.0",
+  "description": "Tool to apply OpenAPI overlays, built in NodeJS with a command line interface (CLI).",
   "main": "index.js",
   "bin": {
     "overlayjs": "./index.js"
@@ -12,7 +12,7 @@
     "fmt": "eslint . --config .eslintrc.json --fix"
   },
   "type": "module",
-  "author": "",
+  "author": "Lorna Mitchell <github@lornajane.net>",
   "license": "Apache2",
   "dependencies": {
     "@stoplight/yaml": "^4.2.3",
