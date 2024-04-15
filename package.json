@@ -13,6 +13,12 @@
   },
   "type": "module",
   "author": "Lorna Mitchell <github@lornajane.net>",
+  "homepage": "https://github.com/lornajane/openapi-overlays-js#readme",
+  "bugs": "https://github.com/lornajane/openapi-overlays-js/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lornajane/openapi-overlays-js.git"
+  },
   "license": "Apache2",
   "dependencies": {
     "@stoplight/yaml": "^4.2.3",
