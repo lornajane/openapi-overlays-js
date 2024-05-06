@@ -1,6 +1,6 @@
 {
   "name": "openapi-overlays-js",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Tool to apply OpenAPI overlays, built in NodeJS with a command line interface (CLI).",
   "main": "index.js",
   "bin": {
