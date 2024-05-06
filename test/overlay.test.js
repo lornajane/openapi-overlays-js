@@ -23,6 +23,17 @@ test('add a description and update the summary', () => {
   expect(result).toEqual(expectedOutput)
 })
 
+test('apply an overlay to the root object', () => {
+  const openapiFile = 'test/openapi/town.yaml'
+  const overlayFile = 'test/overlays/update-root.yaml'
+  const expectedFile = 'test/expected/town-root-updated.yaml'
+  const expectedOutput = fs.readFileSync(expectedFile, 'utf8')
+
+  const result = overlayFiles(openapiFile, overlayFile)
+
+  expect(result).toEqual(expectedOutput)
+})
+
 test('remove an example', () => {
   const openapiFile = 'test/openapi/town.yaml'
   const overlayFile = 'test/overlays/remove-example.yaml'
