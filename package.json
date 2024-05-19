@@ -24,7 +24,7 @@
     "@stoplight/yaml": "^4.2.3",
     "arg": "^5.0.2",
     "jsonpath": "^1.1.1",
-    "mergician": "^1.0.3",
+    "mergician": "^2.0.2",
     "openapi-format": "^1.13.0"
   },
   "devDependencies": {
