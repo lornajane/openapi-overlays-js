@@ -17,7 +17,7 @@ Overlays are a way to extend or enhance an existing [OpenAPI description](https:
 Install the `overlayjs` command from [npm](https://npmjs.com) with the following command:
 
 ```text
-npm install -g openapi-overlay-js
+npm install -g openapi-overlays-js
 ```
 
 The `-g` switch installs it globally so you can use the command from anywhere on your system.
