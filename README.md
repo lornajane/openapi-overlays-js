@@ -30,7 +30,7 @@ Example: `overlayjs --openapi openapi.yml --overlay add-sparkle.yaml`
 
 Use `overlayjs --help` to see the usage information.
 
-See [docs/examples](https://github.com/lornajane/openapi-overlays-js/docs/examples/index.md) for more examples.
+See [docs/examples](https://github.com/lornajane/openapi-overlays-js/blob/main/docs/examples/index.md) for more examples.
 
 ## Project status
 
