@@ -132,3 +132,17 @@ test('remove all matching responses', () => {
 
   expect(result).toEqual(expectedOutput)
 })
+
+test('add a $ref to multiple targets without YAML anchors/aliases (#32)', () => {
+  const openapiFile = 'test/openapi/town.yaml'
+  const overlayFile = 'test/overlays/ref-parameters.yaml'
+  const expectedFile = 'test/expected/town-ref-parameters.yaml'
+  const expectedOutput = fs.readFileSync(expectedFile, 'utf8')
+
+  const result = overlayFiles(openapiFile, overlayFile)
+
+  // Each matched GET must carry the literal $ref line, never a YAML alias.
+  expect(result).not.toMatch(/&ref_\d|\*ref_\d/)
+  expect((result.match(/\$ref: '#\/components\/parameters\/filterParam'/g) || []).length).toEqual(3)
+  expect(result).toEqual(expectedOutput)
+})

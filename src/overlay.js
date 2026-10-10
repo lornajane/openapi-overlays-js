@@ -44,7 +44,7 @@ function applyOverlayToOpenAPI (spec, overlay) {
 // Deep merge using a module (built-in spread operator is only shallow)
 function merger (obj) {
   return (chunk) => {
-    return mergician({ appendArrays: true })(chunk, obj)
+    return mergician({ appendArrays: true })(chunk, structuredClone(obj))
   }
 }
 
